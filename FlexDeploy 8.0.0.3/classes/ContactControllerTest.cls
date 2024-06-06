@@ -1,5 +1,16 @@
 @isTest
 private class ContactControllerTest {
+	@TestSetup
+    private static void TestData()
+    {
+        //Insert Contact
+        Contact con = New Contact();
+        //con.Salutation = 'Mr.';
+        con.FirstName = 'TestFirstName';
+        con.LastName = 'TestLastName';
+        
+        INSERT con;
+    }
     @isTest
     private static void FirstMethod()
     {
@@ -38,13 +49,8 @@ private class ContactControllerTest {
     @isTest
     private static void SecondMethod()
     {
-	Contact con = New Contact();
-        //con.Salutation = 'Mr.';
-        con.FirstName = 'TestFirstName';
-        con.LastName = 'TestLastName';
-        INSERT con;
-
         Contact conRec = [SELECT ID, Salutation FROM Contact LIMIT 1];
+        
         conRec.Salutation = 'Dr.';
         
         Test.startTest();

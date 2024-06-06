@@ -1,14 +1,20 @@
 @isTest
 private class AccountControllerTest {
+	@TestSetup
+    private static void TestData()
+    {
+        Account acc = New Account();
+        acc.Name = 'TestAccount';
+        acc.Site = 'FlexDeploy';
+        
+        INSERT acc;
+    }
+    
     @isTest
     private static void FirstMethod()
     {
-	Account acc = New Account();
-        acc.Name = 'TestAccount';
-        acc.Site = 'FlexDeploy';
-        INSERT acc;
-
         Account accList = [SELECT ID, Name, Rating, Ownership FROM Account LIMIT 1];
+        
         accList.Ownership = 'Public';
         
         Test.startTest();
@@ -16,18 +22,15 @@ private class AccountControllerTest {
         Test.stopTest();
         
         List<Account> result = [SELECT ID, Name, Rating, Ownership FROM Account WHERE Rating = 'Hot'];
+        
         System.assertEquals(1,result.size());
     }
     
     @isTest
     private static void SecondMethod()
     {
-	Account acc = New Account();
-        acc.Name = 'TestAccount';
-        acc.Site = 'FlexDeploy';
-        INSERT acc;
-
         Account accList = [SELECT ID, Name, Rating, Ownership FROM Account LIMIT 1];
+        
         accList.Ownership = 'Private';
         
         Test.startTest();
@@ -35,18 +38,15 @@ private class AccountControllerTest {
         Test.stopTest();
         
         List<Account> result = [SELECT ID, Name, Rating, Ownership FROM Account WHERE Rating = 'Cold'];
+        
         System.assertEquals(1,result.size());
     }
     
     @isTest
     private static void ThirdMethod()
     {
-	Account acc = New Account();
-        acc.Name = 'TestAccount';
-        acc.Site = 'FlexDeploy';
-        INSERT acc; 
-
         Account accList = [SELECT ID, Name, Rating, Ownership FROM Account LIMIT 1];
+        
         accList.Ownership = 'Other';
         
         Test.startTest();
@@ -54,6 +54,7 @@ private class AccountControllerTest {
         Test.stopTest();
         
         List<Account> result = [SELECT ID, Name, Rating, Ownership FROM Account WHERE Rating = 'Warm'];
+        
         System.assertEquals(1,result.size());
     }
 }
