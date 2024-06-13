@@ -1,13 +1,13 @@
-trigger ConTrigger on Contact (before insert, before update) {
+trigger ConTrigger on Contact (before insert, before update, after update) {
 	if(trigger.isBefore)
     {
-        if(trigger.isInsert)
+       
+    }
+    else if(trigger.isAfter)
+    {
+        if(trigger.isUpdate)
         {
-            ContactController.IdentifyGender(trigger.new);
-        }
-        else if(trigger.isUpdate)
-        {
-            ContactController.IdentifyGender(trigger.new);
+            ContactController.changeEmail(trigger.new, trigger.oldMap);
         }
     }
 }
