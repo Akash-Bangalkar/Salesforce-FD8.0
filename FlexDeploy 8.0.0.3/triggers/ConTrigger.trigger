@@ -1,5 +1,5 @@
 trigger ConTrigger on Contact (before insert, before update, after update) {
-	if(trigger.isBefore)
+    if(trigger.isBefore)
     {
        
     }
