@@ -221,9 +221,9 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Case_Subreason_c__c</fullName>
+        <fullName>Case_Subreason__c</fullName>
         <externalId>false</externalId>
-        <label>Case_Subreason__c</label>
+        <label>Case Subreason</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>

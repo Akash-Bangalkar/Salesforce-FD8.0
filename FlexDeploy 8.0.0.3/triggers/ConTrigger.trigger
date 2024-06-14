@@ -1,7 +1,7 @@
 trigger ConTrigger on Contact (before insert, before update, after update) {
-    if(trigger.isBefore)
+	if(trigger.isBefore)
     {
-       
+       ContactController.uniqueValue(trigger.new, trigger.oldMap);
     }
     else if(trigger.isAfter)
     {
